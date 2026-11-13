@@ -3,10 +3,10 @@
 </p>
 
 <p align="center">
-  <a href="https://punnet.dev"><img src="docs/buttons/website.png" alt="punnet.dev" width="184" height="60"></a>
-  <a href="#install"><img src="docs/buttons/install.png" alt="Install" width="184" height="60"></a>
-  <a href="docs/PRIVACY.md"><img src="docs/buttons/privacy.png" alt="Privacy" width="184" height="60"></a>
-  <a href="#develop"><img src="docs/buttons/develop.png" alt="Develop" width="184" height="60"></a>
+  <a href="https://punnet.dev"><img src="docs/buttons/website.png" alt="punnet.dev" width="150" height="49"></a>
+  <a href="#install"><img src="docs/buttons/install.png" alt="Install" width="150" height="49"></a>
+  <a href="docs/PRIVACY.md"><img src="docs/buttons/privacy.png" alt="Privacy" width="150" height="49"></a>
+  <a href="#develop"><img src="docs/buttons/develop.png" alt="Develop" width="150" height="49"></a>
 </p>
 
 Marketplace is useful. Scrolling through sold posts, "wanted" ads and $1 placeholder prices is not. punnet tidies Marketplace while you browse, so the good listings are the ones you see.
