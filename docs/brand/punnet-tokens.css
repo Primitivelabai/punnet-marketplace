@@ -1,0 +1,82 @@
+/* punnet design tokens · v1.1 · 2026-11-09 (rail, ink actions, system fonts)
+   Use inside the shadow-root shell (ui.js CSS string) and in popup.css.
+   For page.css (Facebook's page), copy the values you need under html.mm-on;
+   custom properties on :host do not reach the page. */
+
+:host, :root {
+  /* Colour: brand */
+  --pn-ink:        #2b2420;  /* all text, dark toast, pill button (see note) */
+  --pn-primary:    #2b2420;  /* = ink. Primary buttons, switch on, catch-up strip, active chips */
+  --pn-wicker:     #7a4a22;  /* logo only */
+  --pn-straw:      #e2b783;  /* active tab, Seen badge, toast action */
+  --pn-straw-deep: #c98f52;  /* logo weave only */
+  --pn-oat:        #f4efe6;  /* top bar, sheets, rail, panel accents */
+  --pn-white:      #ffffff;  /* fields, cards, listing panel */
+  --pn-apple:      #d23b2a;  /* counts, price drops, warn marker, shortlist star */
+  --pn-blueberry:  #3d4a9e;  /* New badge, info marker */
+  --pn-leaf:       #4f7a3a;  /* good marker, "best" marks in compare */
+
+  /* Colour: tones (text on tint passes 4.5:1) */
+  --pn-warn-bg: #fbe7e3;  --pn-warn-fg: #8f2a1c;
+  --pn-good-bg: #e9f1e1;  --pn-good-fg: #3b5e2b;
+  --pn-info-bg: #e8eaf8;  --pn-info-fg: #2f3a80;
+
+  /* Colour: neutrals, all ink at opacity */
+  --pn-hairline:   rgba(43, 36, 32, .12);
+  --pn-hairline-2: rgba(43, 36, 32, .16);  /* field and button borders */
+  --pn-muted:      rgba(43, 36, 32, .66);  /* secondary text, min for body */
+  --pn-label:      rgba(43, 36, 32, .62);  /* mono eyebrows */
+  --pn-off-track:  rgba(43, 36, 32, .20);  /* switch off */
+  --pn-scrim:      rgba(43, 36, 32, .45);  /* behind sheets */
+  --pn-dim:        .45;                    /* opacity of revealed hidden cards */
+
+  /* Type: system fonts only (decided 2026-11-09). Nothing bundled. */
+  --pn-font-ui:   system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --pn-font-mono: ui-monospace, "SF Mono", Consolas, "Roboto Mono", monospace;
+  /* Wordmark ships as SVG (punnet-wordmark.svg), so Space Grotesk is NOT bundled. */
+
+  --pn-text-xs: 11px;   /* badges, tab labels */
+  --pn-text-sm: 13px;   /* hints, chips, secondary */
+  --pn-text-md: 14px;   /* buttons, nav */
+  --pn-text-lg: 15px;   /* body, inputs, toggle labels */
+  --pn-text-xl: 22px;   /* mobile sheet title */
+  --pn-text-2xl: 24px;  /* desktop sheet title */
+  --pn-eyebrow: 10px;   /* mono, uppercase, letter-spacing .16em */
+
+  /* Space: 4 px rhythm */
+  --pn-s1: 4px; --pn-s2: 8px; --pn-s3: 12px; --pn-s4: 16px; --pn-s5: 20px; --pn-s6: 24px;
+
+  /* Radius: squared-off on purpose (pixel feel). No pills anywhere. */
+  --pn-r-badge:  4px;
+  --pn-r-small:  6px;   /* chips, icon buttons, card actions */
+  --pn-r-field:  8px;   /* inputs, buttons */
+  --pn-r-switch: 7px;   /* switch track; thumb 5px */
+  --pn-r-panel:  12px;  /* listing panel, pill, toast, cards in sheets */
+  --pn-r-bar:    14px;  /* mobile tab bar */
+  --pn-r-sheet:  16px;  /* sheet top corners (mobile) */
+
+  /* Elevation */
+  --pn-shadow-pill:  0 2px 8px rgba(43, 36, 32, .12);
+  --pn-shadow-toast: 0 6px 20px rgba(43, 36, 32, .22);
+  --pn-shadow-panel: 0 8px 24px rgba(0, 0, 0, .16);
+
+  /* Sizes */
+  --pn-bar-h: 56px;       /* search strip; must stay 56 or re-check page offsets */
+  --pn-rail-w: 72px;      /* desktop rail; Facebook page gets padding-left: 72px */
+  --pn-tabbar-h: 64px;    /* floats 12px off the bottom, 10px off the sides = 76px page padding */
+  --pn-control-h: 40px;   /* search strip controls */
+  --pn-field-h: 44px;     /* sheet inputs, touch targets */
+  --pn-sheet-w: 480px;    /* desktop sheet */
+  --pn-sheet-w-wide: 760px; /* shortlist compare */
+  --pn-panel-w: 336px;    /* listing panel */
+
+  /* Motion */
+  --pn-ease: cubic-bezier(.16, 1, .3, 1);
+  --pn-fast: 160ms;  /* hover, press */
+  --pn-base: 240ms;  /* toast, pill, switch */
+  --pn-slow: 320ms;  /* sheet in/out */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host, :root { --pn-fast: 0ms; --pn-base: 0ms; --pn-slow: 0ms; }
+}

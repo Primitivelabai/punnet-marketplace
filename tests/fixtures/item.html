@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Stand-in for a Marketplace listing page: the seller-message control is Facebook's own and must survive. -->
+<html lang="en"><head><meta charset="utf-8"><title>Oak dining table | Facebook Marketplace</title></head>
+<body>
+  <div role="banner"><a href="/">facebook</a><a href="/messages/">Messenger</a></div>
+  <div role="main" style="padding-top:56px">
+    <h1>Oak dining table</h1><img src="https://www.facebook.com/fixture/oak.jpg" alt="" width="120" height="80"><span>A$120</span>
+    <div>Listed 2 days ago in Fremantle, WA</div>
+    <div aria-label="Message seller" role="button" id="message-seller" tabindex="0">Message</div>
+    <textarea id="message-box" aria-label="Send seller a message">Hi, is this available?</textarea>
+    <p>Great table, barely used. Small deposit to hold it, WhatsApp me on 0412 345 678.</p>
+    <a href="/marketplace/profile/555/">Seller profile</a>
+    <div>Joined Facebook in 2026</div>
+    <a href="/groups/123/">Posted in Perth Buy Swap Sell</a>
+  </div>
+  <script>
+    document.getElementById('message-seller').addEventListener('click', () => { document.body.dataset.messageClicked = 'yes'; });
+  </script>
+</body></html>

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.smoke-profile/
+smoke-out/
+extension/_metadata/
+.scratch/

@@ -1,0 +1,24 @@
+Punnet Marketplace Extension
+Copyright 2026 Primitive AI Labs Pty Ltd
+
+The first-party code and documentation in this distribution are made available
+under the Apache License, Version 2.0. See LICENSE.
+
+Third-party data attribution
+----------------------------
+Australian locality/coordinate data used by the extension is derived from the
+GeoNames Australian postal code export:
+https://www.geonames.org/
+https://download.geonames.org/export/zip/AU.zip
+
+GeoNames data is licensed under Creative Commons Attribution 4.0 International:
+https://creativecommons.org/licenses/by/4.0/
+
+The data was transformed for this extension by removing postal facilities,
+collapsing locations to one coordinate per name and state, and omitting
+ambiguous names with points more than 15 km apart in the same state.
+The GeoNames-derived data remains subject to CC BY 4.0, not Apache-2.0.
+See extension/src/data/au-places.js and tools/build-places.mjs.
+
+Product and service names of third parties remain the property of their owners.
+This extension is not affiliated with or endorsed by Meta or Facebook.
