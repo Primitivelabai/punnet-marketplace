@@ -51,7 +51,7 @@ punnet runs on Facebook's pages, so Facebook still sees what it always sees. It 
 
 ## Install
 
-**Chrome Web Store:** coming soon.
+**Chrome Web Store:** [live](https://chromewebstore.google.com/detail/punnet/pfjgeddkbghjebghieoclmenclpondpa).
 
 **From this repo:**
 
