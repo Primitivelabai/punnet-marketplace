@@ -1,0 +1,171 @@
+/*
+ * punnet — styles applied to Facebook's own page.
+ * Everything is scoped under html.mm-on / html.mm-shell (set by the content script), so pausing
+ * punnet restores Facebook exactly. We target data-mm-* attributes that our script sets,
+ * never Facebook's generated class names.
+ */
+
+/* punnet tokens (punnet-tokens.css), copied here because :host properties don't reach the page.
+   Facebook's own card text keeps Facebook's type and colour; only our layers use these. */
+html.mm-on {
+  --pn-ink: #2b2420;
+  --pn-straw: #e2b783;
+  --pn-oat: #f4efe6;
+  --pn-apple: #d23b2a;
+  --pn-blueberry: #3d4a9e;
+  --pn-hairline: rgba(43, 36, 32, .12);
+  --pn-dim: .45;
+  --pn-ease: cubic-bezier(.16, 1, .3, 1);
+  --pn-fast: 160ms;
+  --pn-font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) { html.mm-on { --pn-fast: 0ms; } }
+
+/* Desktop shell: room for the 72 px rail, and for the catch-up strip while it runs. */
+@media (min-width: 761px) {
+  html.mm-shell:not(.mm-msite) body { padding-left: 72px !important; }
+  html.mm-shell.mm-catching:not(.mm-msite) body { padding-top: 48px !important; }
+}
+
+/* Facebook's global top bar: kept in the layout (so nothing shifts), visually replaced by ours. */
+html.mm-shell [data-mm="fb-bar"] {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Marketplace's own side panel (location, radius, categories): tucked away, opened as a drawer. */
+html.mm-shell:not(.mm-side-open) [data-mm="fb-side"] {
+  display: none !important;
+}
+html.mm-shell.mm-side-open [data-mm="fb-side"] {
+  position: fixed !important;
+  top: 68px !important;
+  left: 84px !important;
+  bottom: 12px !important;
+  width: min(360px, calc(100vw - 24px)) !important;
+  max-width: none !important;
+  z-index: 2147483000 !important;
+  overflow: auto !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16), 0 0 0 1px var(--pn-hairline) !important;
+  animation: mm-side-in 320ms var(--pn-ease);
+}
+@media (max-width: 760px) {
+  html.mm-shell.mm-side-open [data-mm="fb-side"] { left: 10px !important; }
+}
+@keyframes mm-side-in {
+  from { transform: translateX(-16px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* ---- Listing cards ---- */
+html.mm-on [data-mm-pos] { position: relative !important; }
+
+/* Hidden cards: gone, or dimmed with a reason label when "Show" is on. */
+html.mm-on:not(.mm-reveal) [data-mm-hide] { display: none !important; }
+html.mm-on.mm-reveal [data-mm-hide] { opacity: var(--pn-dim); }
+/* Reason label, top-left of the photo (badges step down below it). Cards only: a hidden sponsored
+   block has no positioned box to sit in. */
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide]::before {
+  content: "Hidden by you";
+  position: absolute;
+  z-index: 5;
+  left: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px 5px 26px;
+  border-radius: 6px;
+  font: 500 12px/1.2 var(--pn-font-ui);
+  color: #fff;
+  background: rgba(43, 36, 32, .88) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 3l18 18M10.6 6.1A10 10 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-3.1 3.8M6.6 6.6C3.8 8.3 2 12 2 12s3.5 6 10 6a9.7 9.7 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2'/%3E%3C/svg%3E") no-repeat 8px center / 13px;
+  pointer-events: none;
+}
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="sold"]::before { content: "Sold"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="keyword"]::before { content: "Left-out word"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="price"]::before { content: "Over your price"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="shipped"]::before { content: "Ships only"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="viewed"]::before { content: "Opened before"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="junk"]::before { content: "Non-sale filter"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="not-new"]::before { content: "Not new"; }
+html.mm-on.mm-reveal [data-mm-card][data-mm-hide="distance"]::before { content: "Too far"; }
+
+/* Card actions: star, then hide. Always on touch, on hover/focus with a mouse, always on a starred card. */
+html.mm-on [data-mm-ui="card-actions"] {
+  position: absolute;
+  z-index: 4;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity var(--pn-fast) var(--pn-ease);
+}
+html.mm-on [data-mm-card]:hover [data-mm-ui="card-actions"],
+html.mm-on [data-mm-card]:focus-within [data-mm-ui="card-actions"],
+html.mm-on [data-mm-starred] [data-mm-ui="card-actions"] { opacity: 1; }
+@media (hover: none) {
+  html.mm-on [data-mm-ui="card-actions"] { opacity: 1; }
+}
+html.mm-on [data-mm-act] {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font: 500 16px/1 var(--pn-font-ui);
+  color: var(--pn-ink);
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 1px 4px rgba(43, 36, 32, .16);
+}
+html.mm-on [data-mm-act="hide"] { font-size: 20px; }
+html.mm-on [data-mm-act]:hover { background: #fff; }
+html.mm-on [data-mm-act="star"][aria-pressed="true"] { color: var(--pn-apple); }
+html.mm-on [data-mm-act]:focus-visible { outline: 2px solid var(--pn-ink); outline-offset: 2px; }
+
+/* Mobile site: a row whose cards are all hidden folds away too. */
+html.mm-on:not(.mm-reveal) [data-mm-hide-row] { display: none !important; }
+
+/* Badge row: New, price drop, Sold, Relisted, Seen, distance. Squared corners, no pills. */
+html.mm-on [data-mm-ui="badges"] {
+  position: absolute;
+  z-index: 4;
+  top: 8px;
+  left: 8px;
+  right: 84px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  pointer-events: none;
+}
+html.mm-on [data-mm-ui="badges"]:empty { display: none; }
+html.mm-on.mm-reveal [data-mm-hide] > [data-mm-ui="badges"] { top: 40px; }
+html.mm-on [data-mm-badge] {
+  padding: 5px 7px;
+  border-radius: 4px;
+  font: 500 11px/1.2 var(--pn-font-ui);
+  color: var(--pn-ink);
+  background: #fff;
+}
+html.mm-on [data-mm-badge="new"] { color: #fff; background: var(--pn-blueberry); }
+html.mm-on [data-mm-badge="drop"] { color: #fff; background: var(--pn-apple); }
+html.mm-on [data-mm-badge="status"] { color: #fff; background: rgba(43, 36, 32, .88); }
+html.mm-on [data-mm-badge="repost"] { background: #fff; box-shadow: inset 0 0 0 1px rgba(43, 36, 32, .2); }
+html.mm-on [data-mm-badge="seen"] { background: var(--pn-straw); }
+html.mm-on [data-mm-badge="km"] { background: var(--pn-oat); box-shadow: inset 0 0 0 1px rgba(43, 36, 32, .16); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.mm-on [data-mm-ui="card-actions"] { transition: none; }
+  html.mm-shell.mm-side-open [data-mm="fb-side"] { animation: none; }
+}
+
+/* Room for the mobile tab bar (12 + 64) so the last row of listings isn't covered. */
+@media (max-width: 760px) {
+  html.mm-shell body { padding-bottom: 76px !important; }
+}
+html.mm-shell.mm-msite body { padding-bottom: 76px !important; }

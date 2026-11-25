@@ -1,0 +1,226 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/(?:[?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/home\\.php(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/watch(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/reel(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/reels(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/stories(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/groups(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/gaming(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/notifications(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/friends(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/feeds(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/memories(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/fundraisers(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "https://\\1facebook.com/marketplace/"
+      }
+    },
+    "condition": {
+      "regexFilter": "^https://((?:www|web|m)\\.)?facebook\\.com/events(?:[/?#].*)?$",
+      "resourceTypes": [
+        "main_frame"
+      ]
+    }
+  }
+]

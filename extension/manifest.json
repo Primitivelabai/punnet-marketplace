@@ -1,0 +1,79 @@
+{
+  "manifest_version": 3,
+  "name": "punnet",
+  "short_name": "punnet",
+  "version": "0.4.1",
+  "description": "A calm, buyer-first way to shop Marketplace: filters, a shortlist and price memory, all kept on your device.",
+  "minimum_chrome_version": "111",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "punnet",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://*.facebook.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "redirects",
+        "enabled": true,
+        "path": "rules/redirects.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/*",
+        "https://web.facebook.com/*",
+        "https://m.facebook.com/*"
+      ],
+      "js": [
+        "src/content/page-nav.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.facebook.com/*",
+        "https://web.facebook.com/*",
+        "https://m.facebook.com/*"
+      ],
+      "js": [
+        "src/core/routes.js",
+        "src/core/filters.js",
+        "src/core/memory.js",
+        "src/core/watches.js",
+        "src/data/au-places.js",
+        "src/core/places.js",
+        "src/core/shortlist.js",
+        "src/core/starters.js",
+        "src/core/enhance.js",
+        "src/content/ui.js",
+        "src/content/app.js"
+      ],
+      "css": [
+        "src/content/page.css"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
